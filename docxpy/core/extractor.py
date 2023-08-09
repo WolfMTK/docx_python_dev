@@ -17,6 +17,10 @@ class DocxExtractor:
 
 
 class DocxExtractorRead(DocxExtractor):
+    """
+    A class responsible for unzipping files with docx extension.
+    """
+
     def __init__(self, path: str | Path, name: str) -> None:
         """
         Args:
@@ -31,6 +35,8 @@ class DocxExtractorRead(DocxExtractor):
         self._check_zip()
 
     def read(self) -> None:
+        """Unpacking a file with docx extension."""
+
         path = os.path.join(self._path, 'templates')
         try:
             os.mkdir(path)
