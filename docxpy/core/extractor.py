@@ -98,6 +98,9 @@ class DocxExtractorWrite(DocxExtractor):
                     arcname = os.path.relpath(filepath, self._path)
                     zf.write(filepath, arcname)
 
+    def _chech_name_file(self) -> bool:
+        return 'docx' in self._name
+
     def _correct_name_file(self) -> str:
         return f'{self._name}.docx'
 
@@ -105,11 +108,6 @@ class DocxExtractorWrite(DocxExtractor):
         if self._path_save and os.path.isdir(self._path_save):
             return os.path.join(self._path_save, self._name)
         return os.path.join(self._path, self._name)
-
-    def _chech_name_file(self) -> bool:
-        if 'docx' in self._name:
-            return True
-        return False
 
     def _check_save_path(self) -> None | Never:  # type: ignore
         if self._path_save and not os.path.isdir(self._path_save):
